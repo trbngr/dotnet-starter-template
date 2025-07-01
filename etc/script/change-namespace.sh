@@ -10,11 +10,12 @@ if [[ "$CURRENT_NAMESPACE" == "$REQUESTED_NAMESPACE" ]]; then
     exit 0
 fi
 
-update_namespace_in_file() {
+replace_in_file() {
     local file="$1"
-    local new_ns="${2:-$REQUESTED_NAMESPACE}"
+    local current_value="$2"
+    local new_value="$3"
 
-    awk -v old="$CURRENT_NAMESPACE" -v new="$new_ns" '{gsub(old, new); print}' "$file" >"$file.tmp"
+    awk -v old="$current_value" -v new="$new_value" '{gsub(old, new); print}' "$file" >"$file.tmp"
     mv "$file.tmp" "$file"
 }
 
@@ -25,15 +26,15 @@ update_backend_namespaces() {
 
     if [[ -n "$files" ]]; then
         while IFS= read -r file; do
-            update_namespace_in_file "$file"
+            replace_in_file "$file" "$CURRENT_NAMESPACE" "$REQUESTED_NAMESPACE"
         done <<<"$files"
     fi
 }
 
 update_backend_namespaces
 
-update_namespace_in_file "frontend/apps/frontend/src/auth-config.tsx" $(to-snake-case $REQUESTED_NAMESPACE)
-update_namespace_in_file "etc/keycloak/realm.json" $(to-snake-case $REQUESTED_NAMESPACE)
+replace_in_file "frontend/apps/frontend/src/auth-config.tsx" "$(to-snake-case $CURRENT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
+replace_in_file "etc/keycloak/realm.json" "$(to-snake-case $CURRENT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
 
 update_state_file "CURRENT_NAMESPACE" "$REQUESTED_NAMESPACE"
 

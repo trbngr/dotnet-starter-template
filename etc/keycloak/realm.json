@@ -1,6 +1,6 @@
 {
   "id": "7df90b65-fa1c-49a4-98e9-a1f6e8112ed6",
-  "realm": "starter",
+  "realm": "starter_template",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -67,7 +67,7 @@
       },
       {
         "id": "8b1e0e66-9f63-462b-9c8b-0db8312bee22",
-        "name": "default-roles-starter",
+        "name": "default-roles-starter_template",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -417,7 +417,7 @@
   "groups": [],
   "defaultRole": {
     "id": "8b1e0e66-9f63-462b-9c8b-0db8312bee22",
-    "name": "default-roles-starter",
+    "name": "default-roles-starter_template",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
@@ -492,13 +492,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/starter/account/",
+      "baseUrl": "/realms/starter_template/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/starter/account/*"
+        "/realms/starter_template/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -539,13 +539,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/starter/account/",
+      "baseUrl": "/realms/starter_template/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/starter/account/*"
+        "/realms/starter_template/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -782,13 +782,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/starter/console/",
+      "baseUrl": "/admin/starter_template/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/starter/console/*"
+        "/admin/starter_template/console/*"
       ],
       "webOrigins": [
         "+"
