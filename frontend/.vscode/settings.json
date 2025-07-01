@@ -1,0 +1,14 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.tsx": "${basename}.*.tsx,${basename}.module.css",
+    "nx.json": ".editorconfig, .gitignore, .prettierignore, .prettierrc, eslint.config.mjs, README.md, tsconfig.json, package.json, vitest.workspace.ts"
+  },
+  "files.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/storybook-static": true,
+    ".nx": true
+  },
+  "nxConsole.generateAiAgentRules": true,
+}

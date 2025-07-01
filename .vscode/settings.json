@@ -1,0 +1,14 @@
+{
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "devenv.nix": ".envrc, devenv.lock, devenv.yaml, .devenv.flake.nix, .gitignore, .devcontainer.json",
+        "appsettings.json": "appsettings.*.json"
+    },
+    "files.exclude": {
+        "result": true,
+        ".direnv": true,
+        ".jj": true,
+        ".devenv.flake.nix": false,
+    },
+    "redhat.telemetry.enabled": false
+}

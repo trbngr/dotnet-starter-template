@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/libraries/" />
+  <Folder Name="/libraries/common/">
+    <Project Path="../libraries/common/src/common.csproj" />
+    <Project Path="../libraries/common/test/common.test.csproj" />
+  </Folder>
+  <Folder Name="/modules/" />
+  <Folder Name="/modules/users/">
+    <Project Path="../modules/users/src/users.csproj" />
+    <Project Path="../modules/users/test/users.test.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="test/api.test.csproj" />  
+    <Project Path="src/api.csproj" />
+  </Folder>
+</Solution>

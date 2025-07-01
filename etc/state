@@ -1,0 +1,26 @@
+export CURRENT_NAMESPACE=Starter.Template
+
+update_state_file() {
+    local state_file="$DEVENV_ROOT/etc/state"
+    local key=$1
+    local value=$2
+
+    if [[ -z "$key" || -z "$value" ]]; then
+        echo "Error: key and value must be set" >&2
+        return 1
+    fi
+
+    awk -v k="$key" -v v="$value" '
+        BEGIN {found=0}
+        $0 ~ "^export "k"=" {
+            print "export "k"="v
+            found=1
+            next
+        }
+        {print}
+        END {
+            if (!found) print "export "k"="v
+        }
+    ' "$state_file" >"${state_file}.tmp"
+    mv "${state_file}.tmp" "$state_file"
+}
