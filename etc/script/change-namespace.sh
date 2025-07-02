@@ -9,21 +9,9 @@ if [[ "$PROJECT_NAMESPACE" == "$REQUESTED_NAMESPACE" ]]; then
 fi
 
 if [[ -n $(git status --porcelain) ]]; then
-    echo "Your git repository has uncommitted changes."
-    read -p "Do you want to stash these changes? (y/N) " should_stash
-    if [[ $should_stash =~ ^[Yy]$ ]]; then
-        git stash push -m "Before changing namespace from ${PROJECT_NAMESPACE} to ${REQUESTED_NAMESPACE}"
-    else
-        echo "Aborting due to uncommitted changes"
-        exit 1
-    fi
-    read -p "Do you want to stash these changes? (y/N) " should_stash
-    if [[ $should_stash =~ ^[Yy]$ ]]; then
-        git stash push -m "Before changing namespace from ${PROJECT_NAMESPACE} to ${REQUESTED_NAMESPACE}"
-    else
-        echo "Aborting due to uncommitted changes"
-        exit 1
-    fi
+
+    echo "Aborting due to uncommitted changes"
+    exit 1
 fi
 
 replace_in_file() {
@@ -60,7 +48,7 @@ for file in "${files_to_update_with_snake_case[@]}"; do
     replace_in_file "$file" "$(to-snake-case $PROJECT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
 done
 
-replace_in_file "devenv.nix" "$CURRENT_NAMESPACE" "$REQUESTED_NAMESPACE"
+replace_in_file "devenv.nix" "$PROJECT_NAMESPACE" "$REQUESTED_NAMESPACE"
 
 echo ""
 echo "
