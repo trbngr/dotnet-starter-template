@@ -68,6 +68,10 @@ create_core_project() {
     template=$([[ "$project_type" == "module" ]] && echo "web" || echo "classlib")
     dotnet new $template --name "${name_snake}" --output "src" --no-restore
 
+    if [[ "$template" == "classlib" ]]; then
+        rm -f "src/Class1.cs"
+    fi
+
     # add any packages requested
     for pkg in "${packages[@]}"; do
         echo "adding nuget package: $pkg"

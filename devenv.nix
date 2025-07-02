@@ -8,6 +8,18 @@
   languages.nix.enable = true;
 
   services = {
+    caddy = {
+      enable = true;
+      virtualHosts = {
+        "local.hermanet.com" = {
+          serverAliases = [ ];
+          extraConfig = ''
+            reverse_proxy http://127.0.0.1:4200
+            tls internal
+          '';
+        };
+      };
+    };
     rabbitmq = {
       enable = true;
     };
@@ -42,6 +54,7 @@
   };
 
   enterShell = ''
+    source "$DEVENV_ROOT/etc/state"
     echo "------------"
     git --version
     echo "dotnet version $(dotnet --version)"

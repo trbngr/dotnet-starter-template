@@ -1,4 +1,4 @@
-export CURRENT_NAMESPACE=Starter.Template
+export PROJECT_NAMESPACE=Starter.Template
 
 update_state_file() {
     local state_file="$DEVENV_ROOT/etc/state"

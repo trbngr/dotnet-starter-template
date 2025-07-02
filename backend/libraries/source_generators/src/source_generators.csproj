@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>Starter.Template.SourceGenerators</RootNamespace>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <IsPackable>true</IsPackable>
+        <Description>
+            A high performance .NET Mediator pattern implemenation using source generation.
+        </Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+        <NoWarn>NU1701</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Update="appsettings.Development.json">
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Update="@(Content)">
+            <Visible Condition="'%(NuGetItemType)' == 'Content'">false</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
+        <PackageReference Include="Microsoft.CSharp" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="ConfigKey\Templates\**" />
+        <EmbeddedResource Include="ConfigKey\Templates\**" />
+    </ItemGroup>
+</Project>

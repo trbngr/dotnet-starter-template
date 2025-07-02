@@ -1,8 +1,16 @@
 <Solution>
+  <Folder Name="/build/">
+    <File Path="..\Directory.Build.props" />
+    <File Path="..\Directory.Packages.props" />
+  </Folder>
   <Folder Name="/libraries/" />
   <Folder Name="/libraries/common/">
     <Project Path="../libraries/common/src/common.csproj" />
     <Project Path="../libraries/common/test/common.test.csproj" />
+  </Folder>
+  <Folder Name="/libraries/source_generators/">
+    <Project Path="../libraries/source_generators/src/source_generators.csproj" />
+    <Project Path="../libraries/source_generators/test/source_generators.test.csproj" />
   </Folder>
   <Folder Name="/modules/" />
   <Folder Name="/modules/users/">
@@ -10,7 +18,7 @@
     <Project Path="../modules/users/test/users.test.csproj" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="test/api.test.csproj" />  
     <Project Path="src/api.csproj" />
+    <Project Path="test/api.test.csproj" />
   </Folder>
 </Solution>
