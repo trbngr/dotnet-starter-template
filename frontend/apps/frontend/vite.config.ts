@@ -5,10 +5,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/frontend',
-  sherver: {
+  server: {
     port: 4200,
     host: '127.0.0.1',
-    allowedHosts: ['local.hermanet.com']
+    allowedHosts: ['local.starter_template.com']
   },
   preview: {
     port: 4300,

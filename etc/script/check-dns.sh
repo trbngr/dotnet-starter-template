@@ -1,4 +1,10 @@
-DOMAIN="local.starter_template.com"
+PROJECT_NAMESPACE=$(to-snake-case "$1")
+DOMAIN="local.${PROJECT_NAMESPACE}.com"
+
+if [ -z "$DOMAIN" ]; then
+    echo "Usage: $0 <domain>"
+    exit 1
+fi
 
 RESULT=$(dig "$DOMAIN" @127.0.0.1 +short)
 
@@ -14,15 +20,15 @@ if [ -z "$RESULT" ]; then
     services.dnsmasq = {
         enable = true;
         addresses = {
-            \"local.starter_template.com\" = \"127.0.0.1\";
+            \"local.herman.com\" = \"127.0.0.1\";
         };
     };
     }
     "
     echo ""
     echo "If you are not using nix-darwin, you can install dnsmasq with homebrew via 'brew install dnsmasq'."
+    echo ""
     echo "Example here: https://maxschmitt.me/posts/local-subdomains-dnsmasq-caddy/"
-    echo "You may also need to add 'address=/${DOMAIN}/"
 else
     echo -e "\033[32mDNS entry for $DOMAIN is working!\033[0m"
 fi

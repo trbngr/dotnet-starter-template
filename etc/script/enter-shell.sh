@@ -1,0 +1,11 @@
+echo "------------"
+git --version
+echo "dotnet version $(dotnet --version)"
+echo "pnpm version $(pnpm --version)"
+echo "node version $(node --version)"
+echo "typescript $(tsc --version)"
+echo "------------"
+dotnet tool restore --tool-manifest "$DEVENV_ROOT/.config/dotnet-tools.json"
+echo "------------"
+$DEVENV_ROOT/etc/script/check-dns.sh "$PROJECT_NAMESPACE"
+echo "------------"
