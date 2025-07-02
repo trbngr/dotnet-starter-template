@@ -1,6 +1,6 @@
 using HotChocolate.Types;
 
-namespace Starter.Template.Api;
+namespace StarterTemplate.Api;
 
 [QueryType]
 public partial class Query

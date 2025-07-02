@@ -1,5 +1,5 @@
 // ReSharper disable MemberCanBePrivate.Global
-namespace Starter.Template.Common.Configuration;
+namespace StarterTemplate.Common.Configuration;
 
 public record RabbitMqConfiguration(IConfiguration Configuration)
 {

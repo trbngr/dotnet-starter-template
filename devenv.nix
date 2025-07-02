@@ -5,13 +5,15 @@
     pkgs.ripgrep
   ];
 
+  env.PROJECT_NAMESPACE = "StarterTemplate";
+
   languages.nix.enable = true;
 
   services = {
     caddy = {
       enable = true;
       virtualHosts = {
-        "local.hermanet.com" = {
+        "local.starter_template.com" = {
           serverAliases = [ ];
           extraConfig = ''
             reverse_proxy http://127.0.0.1:4200
@@ -26,7 +28,7 @@
 
     keycloak = {
       enable = true;
-      realms.deepstaging = {
+      realms.starter_template = {
         path = "./etc/keycloak/realm.json";
         import = true;
         export = true;
@@ -40,7 +42,7 @@
       initialScript = "CREATE ROLE postgres SUPERUSER;";
       initialDatabases = [
         {
-          name = "demo";
+          name = "starter_template";
           user = "postgres";
           pass = "postgres";
         }
@@ -65,6 +67,7 @@
     echo "------------"
     dotnet tool restore --tool-manifest "$DEVENV_ROOT/.config/dotnet-tools.json"
     echo "------------"
+    ${./etc/script/check-dns.sh}
   '';
 
   enterTest = ''

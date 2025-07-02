@@ -1,7 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
-namespace Starter.Template.SourceGenerators.ConfigKey;
+namespace StarterTemplate.SourceGenerators.ConfigKey;
 
 public static class Code
 {

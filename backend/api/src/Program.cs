@@ -1,5 +1,5 @@
 using JasperFx;
-using Starter.Template;
+using StarterTemplate;
 using Wolverine;
 using Wolverine.EntityFrameworkCore;
 using Wolverine.Postgresql;

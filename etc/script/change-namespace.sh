@@ -1,13 +1,18 @@
 #!/bin/bash
 
-source "$DEVENV_ROOT/etc/state"
-
 echo "Current namespace: $PROJECT_NAMESPACE"
 read -p "Enter new namespace: " REQUESTED_NAMESPACE
 
 if [[ "$PROJECT_NAMESPACE" == "$REQUESTED_NAMESPACE" ]]; then
     echo "The namespaces are the same. Nothing to do."
     exit 0
+fi
+
+if [[ -n $(git status --porcelain) ]]; then
+    echo "Your git repository has uncommitted changes."
+    echo "We're going to commit these changes before changing the namespace."
+    git add .
+    git commit -m "Before changing namespace from ${PROJECT_NAMESPACE} to ${REQUESTED_NAMESPACE}"
 fi
 
 replace_in_file() {
@@ -33,9 +38,22 @@ update_backend_namespaces() {
 
 update_backend_namespaces
 
-replace_in_file "frontend/apps/frontend/src/auth-config.tsx" "$(to-snake-case $PROJECT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
-replace_in_file "etc/keycloak/realm.json" "$(to-snake-case $PROJECT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
+files_to_update_with_snake_case=(
+    "frontend/apps/frontend/src/auth-config.tsx"
+    "etc/keycloak/realm.json"
+    "devenv.nix"
+    "etc/script/check-dns.sh"
+)
 
-update_state_file "PROJECT_NAMESPACE" "$REQUESTED_NAMESPACE"
+for file in "${files_to_update_with_snake_case[@]}"; do
+    replace_in_file "$file" "$(to-snake-case $PROJECT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
+done
+
+replace_in_file "devenv.nix" "$CURRENT_NAMESPACE" "$REQUESTED_NAMESPACE"
 
 echo "Namespace changed from $PROJECT_NAMESPACE to $REQUESTED_NAMESPACE."
+echo "
+    Please ensure to update any other configurations or files that may reference the old namespace.
+
+    I use dnsmasq to resolve local.*.com to localhost. So you may need to update your dnsmasq configuration.
+"

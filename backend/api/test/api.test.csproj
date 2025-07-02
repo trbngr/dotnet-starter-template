@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-    <RootNamespace>Starter.Template.Api.Test</RootNamespace>
+    <RootNamespace>StarterTemplate.Api.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

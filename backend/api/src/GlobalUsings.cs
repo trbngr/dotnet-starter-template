@@ -1,3 +1,3 @@
 // Global using directives
 
-global using Starter.Template.Common.Configuration;
+global using StarterTemplate.Common.Configuration;

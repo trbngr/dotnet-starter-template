@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.CodeAnalysis;
-using Starter.Template.SourceGenerators.ConfigKey;
+using StarterTemplate.SourceGenerators.ConfigKey;
 
-namespace Starter.Template.SourceGenerators;
+namespace StarterTemplate.SourceGenerators;
 
 [Generator]
 public class ConfigKeyGenerator : IIncrementalGenerator

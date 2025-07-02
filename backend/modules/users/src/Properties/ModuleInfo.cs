@@ -1,6 +1,6 @@
 // ReSharper disable CheckNamespace
 [assembly: HotChocolate.Module("UsersModule")]
-namespace Starter.Template;
+namespace StarterTemplate;
 public static class UsersModule
 {
     public static void AddUsersModule(this Wolverine.WolverineOptions options) =>

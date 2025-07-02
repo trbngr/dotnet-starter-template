@@ -1,4 +1,4 @@
-namespace Starter.Template.Common.Configuration;
+namespace StarterTemplate.Common.Configuration;
 
 public static class AuthConfiguration
 {
