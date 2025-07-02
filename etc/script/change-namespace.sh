@@ -49,11 +49,16 @@ for file in "${files_to_update_with_snake_case[@]}"; do
     replace_in_file "$file" "$(to-snake-case $PROJECT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
 done
 
+echo "$CURRENT_NAMESPACE -> $REQUESTED_NAMESPACE"
 replace_in_file "devenv.nix" "$CURRENT_NAMESPACE" "$REQUESTED_NAMESPACE"
 
-echo "Namespace changed from $PROJECT_NAMESPACE to $REQUESTED_NAMESPACE."
+echo ""
 echo "
+    # #############################################################################
+    Namespace changed from $PROJECT_NAMESPACE to $REQUESTED_NAMESPACE.
+    
     Please ensure to update any other configurations or files that may reference the old namespace.
 
     I use dnsmasq to resolve local.*.com to localhost. So you may need to update your dnsmasq configuration.
+    # #############################################################################
 "
