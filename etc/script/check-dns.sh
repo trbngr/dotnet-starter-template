@@ -1,5 +1,5 @@
-PROJECT_NAMESPACE=$(to-snake-case "$1")
-DOMAIN="local.${PROJECT_NAMESPACE}.com"
+PROJECT_NAMESPACE=$(to-kebab-case "$1")
+DOMAIN="web.local.${PROJECT_NAMESPACE}.com"
 
 if [ -z "$DOMAIN" ]; then
     echo "Usage: $0 <domain>"
@@ -20,7 +20,7 @@ if [ -z "$RESULT" ]; then
     services.dnsmasq = {
         enable = true;
         addresses = {
-            \"local.herman.com\" = \"127.0.0.1\";
+            \"$DOMAIN\" = \"127.0.0.1\";
         };
     };
     }

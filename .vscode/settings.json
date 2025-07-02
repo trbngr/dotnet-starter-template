@@ -5,7 +5,6 @@
         "appsettings.json": "appsettings.*.json"
     },
     "files.exclude": {
-        "result": true,
         ".direnv": true,
         ".jj": true,
         ".devenv.flake.nix": false,

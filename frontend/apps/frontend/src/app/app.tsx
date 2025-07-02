@@ -1,7 +1,6 @@
 // Uncomment this line to use CSS modules
 // import styles from './app.module.css';
 import { useAuth } from 'react-oidc-context';
-import NxWelcome from './nx-welcome';
 
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -10,7 +9,21 @@ export function App() {
 
   return (
     <div>
-      <NxWelcome title={auth.user?.profile.name!} />
+
+      <div className="wrapper">
+        <div className="container">
+          <div id="welcome">
+            <h1>
+              <span> Hello there, </span>
+              Welcome {auth.user?.profile.name!} 👋
+              <br />
+              <button onClick={() => auth.signoutRedirect()}>
+                Sign Out
+              </button>
+            </h1>
+          </div>
+        </div>
+      </div>
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}

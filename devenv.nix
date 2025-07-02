@@ -3,6 +3,7 @@
 {
   packages = [
     pkgs.ripgrep
+    pkgs.dnsmasq
   ];
 
   imports = [

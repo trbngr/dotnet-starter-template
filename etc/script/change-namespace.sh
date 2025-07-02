@@ -37,7 +37,7 @@ update_backend_namespaces() {
 
 update_backend_namespaces
 
-files_to_update_with_snake_case=(
+files_to_update_with_kebab_case=(
     "frontend/apps/frontend/src/auth-config.tsx"
     "etc/keycloak/realm.json"
     "devenv.nix"
@@ -45,7 +45,7 @@ files_to_update_with_snake_case=(
 )
 
 for file in "${files_to_update_with_snake_case[@]}"; do
-    replace_in_file "$file" "$(to-snake-case $PROJECT_NAMESPACE)" "$(to-snake-case $REQUESTED_NAMESPACE)"
+    replace_in_file "$file" "$(to-kebab-case $PROJECT_NAMESPACE)" "$(to-kebab-case $REQUESTED_NAMESPACE)"
 done
 
 replace_in_file "devenv.nix" "$PROJECT_NAMESPACE" "$REQUESTED_NAMESPACE"

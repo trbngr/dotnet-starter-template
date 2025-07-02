@@ -8,7 +8,9 @@ export default defineConfig(() => ({
   server: {
     port: 4200,
     host: '127.0.0.1',
-    allowedHosts: ['local.starter_template.com']
+    open: 'http://web.local.starter-template.com',
+    allowedHosts: ['web.local.starter-template.com'],
+
   },
   preview: {
     port: 4300,

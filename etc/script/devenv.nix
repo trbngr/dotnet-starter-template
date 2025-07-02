@@ -3,6 +3,7 @@ let
   textUtils = {
     to-pascal-case.exec = ''$DEVENV_ROOT/etc/script/text/to-pascal-case.sh "$@";'';
     to-snake-case.exec = ''$DEVENV_ROOT/etc/script/text/to-snake-case.sh "$@";'';
+    to-kebab-case.exec = ''$DEVENV_ROOT/etc/script/text/to-kebab-case.sh "$@";'';
   };
 
   repoUtils = {
